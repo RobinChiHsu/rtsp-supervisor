@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
@@ -51,7 +53,7 @@ def test_jitter_never_exceeds_maximum() -> None:
         {"jitter": 1.5},
     ],
 )
-def test_rejects_invalid_configuration(kwargs: dict[str, float]) -> None:
+def test_rejects_invalid_configuration(kwargs: dict[str, Any]) -> None:
     with pytest.raises(ValueError):  # noqa: PT011
         ExponentialBackoff(**kwargs)
 
