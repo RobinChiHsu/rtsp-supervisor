@@ -53,7 +53,7 @@ branch = true
 
 [tool.mypy]
 strict = true
-files = ["src", "tests"]
+files = ["src", "tests", "examples"]
 
 [tool.ruff]
 line-length = 100
