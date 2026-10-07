@@ -30,7 +30,7 @@ class OpenCVSource:
             raise SourceError("source is not open")
         ok, frame = self._capture.read()
         if not ok:
-            raise SourceError(f"read failed on {redact_url(self._url)}")
+            raise SourceError(f"no frame from {redact_url(self._url)}")
         return cast("NDArray[np.uint8]", frame)
 
     def close(self) -> None:

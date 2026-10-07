@@ -26,7 +26,7 @@ def test_reads_every_frame_then_reports_end_of_stream(clip: Path) -> None:
     source.open()
     try:
         frames = [source.read() for _ in range(3)]
-        with pytest.raises(SourceError, match="read failed"):
+        with pytest.raises(SourceError, match="no frame"):
             source.read()
     finally:
         source.close()
