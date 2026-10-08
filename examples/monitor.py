@@ -2,6 +2,8 @@ import argparse
 import asyncio
 import logging
 
+import cv2
+
 from rtsp_supervisor import StreamState, StreamSupervisor, SupervisorConfig
 from rtsp_supervisor.opencv import OpenCVSource
 
@@ -25,7 +27,7 @@ async def report(supervisor: StreamSupervisor[object], interval: float) -> None:
 
 async def main(url: str, duration: float) -> None:
     supervisor: StreamSupervisor[object] = StreamSupervisor(
-        lambda: OpenCVSource(url),
+        lambda: OpenCVSource(url, api_preference=cv2.CAP_FFMPEG),
         config=SupervisorConfig(read_timeout=3.0),
         on_state_change=log_transition,
     )
