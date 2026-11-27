@@ -30,9 +30,9 @@ exposes frames as an async iterator.
 ![The camera server is stopped and restarted while examples/monitor.py is running](docs/demo.gif)
 
 Above, the camera server is stopped while [`examples/monitor.py`](examples/monitor.py) is reading
-from it. The supervisor backs off exponentially (0.5 s, 1 s, 2 s, 4 s), picks the stream up again
-as soon as the server is back and, because the consumer is slower than the camera, keeps dropping
-stale frames instead of queueing them.
+from it. The supervisor backs off exponentially (starting at 0.5 s and doubling, with jitter),
+picks the stream up again as soon as the server is back and, because the consumer is slower than
+the camera, keeps dropping stale frames instead of queueing them.
 
 ## Install
 
